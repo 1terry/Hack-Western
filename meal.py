@@ -33,6 +33,9 @@ class meal:
     def get_name (self):
         return self.name
     
+    def get_food_list (self):
+        return self.list_of_foods
+
     # Returning a food item of the given name.
     # Returns a food item if found or None if none found.
     def find_food_item (self, food_name):
