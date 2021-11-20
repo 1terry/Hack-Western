@@ -16,6 +16,7 @@ class person:
         self.age = age
         self.exercise_level = exercise_level
         self.meal_list = [meal('breakfast'), meal('lunch'), meal('dinner')]
+        self.total_cal = 0
 
     def change_sex (self, new_sex):
         self.sex = new_sex
@@ -103,10 +104,10 @@ class person:
         else:
             return -1
 
-    def add_meal (self, index):
+    def add_meal(self, index):
         self.meal_list.insert(index, meal('meal' + index+1))
 
-    def remove_meal (self, index):
+    def remove_meal(self, index):
         self.meal_list.pop(index)
 
     def return_meal_at(self, index):
@@ -114,3 +115,8 @@ class person:
 
     def return_meals(self):
         return self.meal_list
+
+    def calculate_total_cal(self):
+        for i in self.meal_list:
+            self.total_cal = self.total_cal + i.total_cal()
+        return self.total_cal

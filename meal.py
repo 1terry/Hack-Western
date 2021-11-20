@@ -14,7 +14,7 @@ class meal:
         # List of food items
         self.list_of_foods = []
         self.name = name
-        self.calories = 0;
+        self.calories = 0
         self.nutrition_dictionary = {}
 
     # Adding food to the list. Returns -1 
@@ -24,12 +24,16 @@ class meal:
         food = FoodItem(new_food)
         food.choose(index)
         # If the item is in the list.
-        if (food in self.list_of_foods):
+        if food in self.list_of_foods:
             return -1
 
         # Otherwise add to the list
         else:
             self.list_of_foods.append(food)
+            self.calories = self.calories + float(food.get_calories())
+            for i in food.get_dictionary():
+                if i not in self.nutrition_dictionary:
+                    self.nutrition_dictionary[i] = food.get_dictionary()[i]
             return 0
 
     def change_name (self, new_name):
@@ -50,5 +54,7 @@ class meal:
             return self.list_of_foods[self.list_of_foods.index(food_name)].get_name()
         
         return None # No item found
-        
+
+    def total_cal(self):
+        return self.calories
     
