@@ -25,7 +25,12 @@ class API:
         self.conn.request("GET", item_string, headers=self.headers)
         res = self.conn.getresponse()
         data = res.read()
-        data_list = data.decode("utf-8").split("{")
+        try:
+            data_list = data.decode("utf-8").split("{")
+            if data_list[1] == '"total_hits":0,"max_score":null,"hits":[]}':
+                raise NameError
+        except NameError:
+            return "Invalid"
         index = 3;
 
         list_of_output = []

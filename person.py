@@ -4,6 +4,7 @@ This is the person class. We will do bodily calculations with this class.
 November 19, 2021
 - Created class
 """
+from meal import meal
 
 class person:
 
@@ -14,6 +15,7 @@ class person:
         self.weight = weight
         self.age = age
         self.exercise_level = exercise_level
+        self.meal_list = [meal('breakfast'), meal('lunch'), meal('dinner')]
 
     def change_sex (self, new_sex):
         self.sex = new_sex
@@ -49,11 +51,11 @@ class person:
     def __get_bmr (self):
         
         # Calculate bmr for a male
-        if (self.sex == "male"):
-            return ((10 * self.weight) + (6.25 * self.height) - (5 * self.age) + 5)
+        if self.sex == "male":
+            return (10 * self.weight) + (6.25 * self.height) - (5 * self.age) + 5
         
-        elif (self.sex == "female"):
-            return ((10 * self.weight) + (6.25 * self.height) - (5 * self.age) - 161)
+        elif self.sex == "female":
+            return (10 * self.weight) + (6.25 * self.height) - (5 * self.age) - 161
 
         else:
             return -1
@@ -100,3 +102,15 @@ class person:
         # An error occurred.
         else:
             return -1
+
+    def add_meal (self, index):
+        self.meal_list.insert(index, meal('meal' + index+1))
+
+    def remove_meal (self, index):
+        self.meal_list.pop(index)
+
+    def return_meal_at(self, index):
+        return self.meal_list[index]
+
+    def return_meals(self):
+        return self.meal_list

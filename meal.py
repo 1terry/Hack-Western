@@ -5,6 +5,8 @@ November 19, 2021
 - Created class
 """
 
+from FoodItem import FoodItem
+
 class meal:
 
     # Constructor for the class
@@ -12,19 +14,22 @@ class meal:
         # List of food items
         self.list_of_foods = []
         self.name = name
+        self.calories = 0;
+        self.nutrition_dictionary = {}
 
     # Adding food to the list. Returns -1 
     # if the item is in the list and 0 if it added 
     # and item successfully.
-    def add_foods (self, new_food):
-        
+    def add_foods (self, new_food, index):
+        food = FoodItem(new_food)
+        food.choose(index)
         # If the item is in the list.
-        if (new_food in self.list_of_foods):
+        if (food in self.list_of_foods):
             return -1
 
         # Otherwise add to the list
         else:
-            self.list_of_foods.append(new_food)
+            self.list_of_foods.append(food)
             return 0
 
     def change_name (self, new_name):
@@ -41,9 +46,8 @@ class meal:
     def find_food_item (self, food_name):
         
         # Loop through the list and find the item. 
-        for x in self.list_of_foods:
-            if (x.get_name == food_name):
-                return x
+        if food_name in self.list_of_foods:
+            return self.list_of_foods[self.list_of_foods.index(food_name)].get_name()
         
         return None # No item found
         
