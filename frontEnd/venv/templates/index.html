@@ -47,11 +47,113 @@
     </div>
 
   </div>
+
+  <!-- Page 2-->
   <div class="container sec2">
-      <br><br><br><br><br>
+    <br><br><br><br><br>
     <div id="middle">
       <button class="btn btn-primary me-md-2" onclick='window.location="#"' type="button">Go Back</button>
       Testing to see if this works
+
+      <!--- Form Logic Starts-->
+      <div class="form-body">
+        <div class="row">
+          <div class="form-holder">
+            <div class="form-content">
+              <div class="form-items">
+                <h3>Fill in the data below</h3>
+                <form class="requires-validation" novalidate>
+
+                  <div class="col-md-12">
+                    <input class="form-control" type="number" name="age" placeholder="Age" required>
+                    <div class="valid-feedback">Age field is valid!</div>
+                    <div class="invalid-feedback">Age field cannot be blank!</div>
+                  </div>
+
+                  <div class="col-md-12 mt-3">
+                    <label class="mb-3 mr-1" for="gender">Gender: </label>
+
+                    <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off" required>
+                    <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
+
+                    <input type="radio" class="btn-check" name="gender" id="female" autocomplete="off" required>
+                    <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
+
+                    <input type="radio" class="btn-check" name="gender" id="secret" autocomplete="off" required>
+                    <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
+                    <div class="valid-feedback mv-up">You selected a gender!</div>
+                    <div class="invalid-feedback mv-up">Please select a gender!</div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <input class="form-control" type="number" name="height" placeholder="Height" required>
+                    <div class="valid-feedback">Height field is valid!</div>
+                    <div class="invalid-feedback">Height field cannot be blank!</div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <input class="form-control" type="number" name="weight" placeholder="Weight" required>
+                    <div class="valid-feedback">Weight field is valid!</div>
+                    <div class="invalid-feedback">Weight field cannot be blank!</div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <select class="form-select mt-3" required>
+                      <option selected disabled value="">Exercise</option>
+                      <option value="1">Little</option>
+                      <option value="2">Light</option>
+                      <option value="3">Moderate</option>
+                      <option value="4">Hard</option>
+                      <option value="5">Work</option>
+                      <option value="6">Athlete</option>
+                    </select>
+                    <div class="valid-feedback">You selected an Exercise Level!</div>
+                    <div class="invalid-feedback">Please select an Exdercise Level!</div>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label">I confirm that all data are correct</label>
+                    <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+                  </div>
+
+                  
+
+
+                  <div class="form-button mt-3">
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--- Form Logic Ends-->
+
+      <!--- Script for Form to check if all the fileds were filled-->
+      <script>
+        (function () {
+          'use strict'
+          const forms = document.querySelectorAll('.requires-validation')
+          Array.from(forms)
+            .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+              }, false)
+            })
+        })()
+
+      </script>
+
+      <!--- Script for Form Ends-->
+
     </div>
   </div>
 
