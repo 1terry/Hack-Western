@@ -3,6 +3,9 @@ This is the person class. We will do bodily calculations with this class.
 
 November 19, 2021
 - Created class
+
+November 20, 2021
+- Made changes 
 """
 from meal import meal
 
@@ -52,10 +55,10 @@ class person:
     def __get_bmr (self):
         
         # Calculate bmr for a male
-        if self.sex == "male":
+        if self.sex.lower() == "male":
             return (10 * self.weight) + (6.25 * self.height) - (5 * self.age) + 5
         
-        elif self.sex == "female":
+        elif self.sex.lower() == "female":
             return (10 * self.weight) + (6.25 * self.height) - (5 * self.age) - 161
 
         else:
@@ -64,22 +67,22 @@ class person:
     # Return the maintenance calories for the person.
     def return_maintenance (self):
     
-        if (self.exercise_level == "little"):
+        if (self.exercise_level.lower() == "little"):
             return (int(self.__get_bmr() * 1.2))
 
-        elif (self.exercise_level == "light"):
+        elif (self.exercise_level.lower() == "light"):
             return (int(self.__get_bmr() * 1.4))
 
-        elif (self.exercise_level == "moderate"):
+        elif (self.exercise_level.lower() == "moderate"):
             return (int(self.__get_bmr() * 1.6))
 
-        elif (self.exercise_level == "hard"):
+        elif (self.exercise_level.lower() == "hard"):
             return (int(self.__get_bmr() * 1.75))
 
-        elif (self.exercise_level == "work"):
+        elif (self.exercise_level.lower() == "work"):
             return (int(self.__get_bmr() * 2.0))
 
-        elif (self.exercise_level == "athlete"):
+        elif (self.exercise_level.lower() == "athlete"):
             return (int(self.__get_bmr() * 2.4))
 
         else:
@@ -94,10 +97,10 @@ class person:
     # "insane": 10% decrease in calories
     def return_losing (self, lose_rate):
 
-        if (lose_rate == "moderate"):
+        if (lose_rate.lower() == "moderate"):
             return (int(self.return_maintenance() * 0.95))
         
-        elif (lose_rate == "insane"):
+        elif (lose_rate.lower() == "insane"):
             return (int(self.return_maintenance() * 0.90))
 
         # An error occurred.

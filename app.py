@@ -16,9 +16,13 @@ import json
 app = Flask (__name__)
 CORS(app)
 
+# If the end of the web url is empty then this is the home screen.
 @app.route ("/")
 def home():
     return ("<h1>Welcome to the server</h1>")
+
+
+# We need to change depending on the ending of the URL given. Or we can enforce url changes by using URL rule.
 
 @app.route('/api/', methods = ['ACCOUNT', 'MODIFYACCOUNT', 'ADDMEAL', 'MODIFYMEAL', 'DELETEMEAL'])
 def postmethod():
