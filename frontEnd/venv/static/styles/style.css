@@ -4,6 +4,11 @@
     margin:0;
     padding:0;
     
+    all: initial;
+    * {
+        all: unset;
+    }
+      
 }
 
 .welcome-header{
@@ -12,6 +17,11 @@
 }
 
 .intro-header{
+    margin:auto;
+    text-align: center;
+}
+
+.btn-light{
     margin:auto;
     text-align: center;
 }
