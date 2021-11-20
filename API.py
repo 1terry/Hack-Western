@@ -1,6 +1,6 @@
 
 class API:
-    dict = {}
+    nutrient_dictionary = {}
     def __init__(self):
         import http.client
         self.conn = http.client.HTTPSConnection("edamam-edamam-nutrition-analysis.p.rapidapi.com")
@@ -17,7 +17,15 @@ class API:
         data = res.read()
 
         data_list = data.decode("utf-8").split("}")
-        # code for calories and attributes
+
+        cal = ''
+        index = data_list[0].find('calories') + 10
+
+        while data_list[0][index] != ",":
+            cal = cal + data_list[0][index]
+            index += 1
+
+        self.nutrient_dictionary['calories'] = cal
 
         for i in range(1, len(data_list)-3):
             if (data_list[i]) != "":
@@ -26,7 +34,6 @@ class API:
                 while data_list[i][index] != "\"":
                     nutrient = nutrient + data_list[i][index]
                     index += 1
-                print(nutrient)
 
                 index = data_list[i].find('quantity') + 10
                 value = ''
@@ -37,11 +44,11 @@ class API:
                 while data_list[i][index] != "\"":
                     value = value + data_list[i][index]
                     index += 1
-                print(value)
 
+            self.nutrient_dictionary[nutrient] = value
 
-api = API()
-api.call_api("1", "tablespoon", "honey")
+        return self.nutrient_dictionary
+
 
 
 
