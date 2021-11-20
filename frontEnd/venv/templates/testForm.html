@@ -7,17 +7,32 @@
     <title>testForm</title>
 </head>
 <body>
-    <form>
-        <label for="fname">sex:</label><br>
+    <!-- <form action="/data" method="post">
+        <label for="sex" name="sex">sex:</label><br>
         <input type="text" id="fname" name="fname"><br>
-        <label for="lname">height:</label><br>
+        <label for="height" name="height">height:</label><br>
         <input type="text" id="lname" name="lname"><br>
-        <label for="lname">weight:</label><br>
+        <label for="weight" name="weight">weight:</label><br>
         <input type="text" id="lname" name="lname"><br>
-        <label for="lname">age:</label><br>
+        <label for="age" name="age">age:</label><br>
         <input type="text" id="lname" name="lname"><br>
-        <label for="lname">exercise_level:</label><br>
+        <label for="exercise" name="exercise">exercise_level:</label><br>
         <input type="text" id="lname" name="lname"><br>
-      </form>
+        <input type="submit" value="Submit">
+      </form> -->
+
+
+      <form action="/data" method = "POST">
+        <p> (male, female) <input type = "text" name = "Sex" /></p>
+        <p>Height <input type = "text" name = "Height" /></p>
+        <p>Weight <input type = "text" name = "Weight" /></p>
+        <p>Age <input type = "text" name = "Age" /></p>
+        <p>Exercise (little, light, moderate, hard, work, athlete) <input type = "text" name = "Exercise" /></p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+
+
+
+
 </body>
 </html>
