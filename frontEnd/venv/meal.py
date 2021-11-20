@@ -4,11 +4,13 @@ This is a meal class. It contains a list of food items.
 November 19, 2021 
 - Created class
 """
-
+NAME = 'item_name'
+BRAND = 'brand_name'
+CALORIES = 'nf_calories'
 from FoodItem import FoodItem
+from foodList import foodList
 
 class meal:
-
     # Constructor for the class
     def __init__(self, name):
         # List of food items
@@ -20,26 +22,28 @@ class meal:
     # Adding food to the list. Returns -1 
     # if the item is in the list and 0 if it added 
     # and item successfully.
-    def add_foods (self, new_food, index):
-        food = FoodItem(new_food)
-        food.choose(index)
-        # If the item is in the list.
-        if food in self.list_of_foods:
-            return -1
+    def add_foods(self, new_food, index):
+        food_list = foodList(new_food)
 
-        # Otherwise add to the list
+        food_dict = food_list.return_chosen(index)
+
+        name = food_dict.pop(NAME)
+        brand = food_dict.pop(BRAND)
+        calories = food_dict.pop(CALORIES)
+
+        self.calories = self.calories + float(calories)
+        food_item = FoodItem(name, brand, calories, food_dict)
+
+        if len(self.nutrition_dictionary) == 0:
+            self.nutrition_dictionary = food_item.get_dictionary()
         else:
-            self.list_of_foods.append(food)
-            self.calories = self.calories + float(food.get_calories())
-            for i in food.get_dictionary():
-                if i not in self.nutrition_dictionary:
-                    self.nutrition_dictionary[i] = food.get_dictionary()[i]
-            return 0
+            for i in self.nutrition_dictionary:
+                if (i != 'nf_serving_size_unit') and (i != 'nf_serving_size_qty'):
+                    self.nutrition_dictionary[i] = float(self.nutrition_dictionary[i]) + float(food_item.get_dictionary()[i])
 
-    def change_name (self, new_name):
-        self.name = new_name
-    
-    def get_name (self):
+        self.list_of_foods.append(food_item)
+
+    def get_name(self):
         return self.name
     
     def get_food_list (self):
@@ -50,10 +54,11 @@ class meal:
     def find_food_item (self, food_name):
         
         # Loop through the list and find the item. 
-        if food_name in self.list_of_foods:
-            return self.list_of_foods[self.list_of_foods.index(food_name)].get_name()
-        
-        return None # No item found
+        for i in self.list_of_foods:
+            if i.get_name() == food_name:
+                return i
+
+        return None# No item found
 
     def total_cal(self):
         return self.calories

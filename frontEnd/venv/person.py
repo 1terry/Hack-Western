@@ -6,8 +6,8 @@ November 19, 2021
 """
 from meal import meal
 
-class person:
 
+class person:
     # Constructor
     def __init__ (self, sex, height, weight, age, exercise_level):
         self.sex = sex
@@ -15,7 +15,7 @@ class person:
         self.weight = weight
         self.age = age
         self.exercise_level = exercise_level
-        self.meal_list = [meal('breakfast'), meal('lunch'), meal('dinner')]
+        self.meal_list = [meal('Meal 1'), meal('Meal 2'), meal('Meal 3')]
         self.total_cal = 0
 
     def change_sex (self, new_sex):
@@ -64,48 +64,52 @@ class person:
     # Return the maintenance calories for the person.
     def return_maintenance (self):
     
-        if (self.exercise_level == "little"):
-            return (int(self.__get_bmr() * 1.2))
+        if self.exercise_level == "little":
+            return int(self.__get_bmr() * 1.2)
 
-        elif (self.exercise_level == "light"):
-            return (int(self.__get_bmr() * 1.4))
+        elif self.exercise_level == "light":
+            return int(self.__get_bmr() * 1.4)
 
-        elif (self.exercise_level == "moderate"):
-            return (int(self.__get_bmr() * 1.6))
+        elif self.exercise_level == "moderate":
+            return int(self.__get_bmr() * 1.6)
 
-        elif (self.exercise_level == "hard"):
-            return (int(self.__get_bmr() * 1.75))
+        elif self.exercise_level == "hard":
+            return int(self.__get_bmr() * 1.75)
 
-        elif (self.exercise_level == "work"):
-            return (int(self.__get_bmr() * 2.0))
+        elif self.exercise_level == "work":
+            return int(self.__get_bmr() * 2.0)
 
-        elif (self.exercise_level == "athlete"):
-            return (int(self.__get_bmr() * 2.4))
+        elif self.exercise_level == "athlete":
+            return int(self.__get_bmr() * 2.4)
 
         else:
             return -1
 
     # Return the bulking calories.
     def return_bulking (self):
-        return (int(self.return_maintenance() * 1.10))
+        return int(self.return_maintenance() * 1.10)
 
     # Return the calories for losing.
     # "moderate": 5% decrease in calories
     # "insane": 10% decrease in calories
     def return_losing (self, lose_rate):
 
-        if (lose_rate == "moderate"):
-            return (int(self.return_maintenance() * 0.95))
+        if lose_rate == "moderate":
+            return int(self.return_maintenance() * 0.95)
         
-        elif (lose_rate == "insane"):
-            return (int(self.return_maintenance() * 0.90))
+        elif lose_rate == "insane":
+            return int(self.return_maintenance() * 0.90)
 
         # An error occurred.
         else:
             return -1
 
     def add_meal(self, index):
-        self.meal_list.insert(index, meal('meal' + index+1))
+        self.meal_list.insert(index-1, meal('Meal' + index))
+        new_index = index
+        while new_index < len(self.meal_list):
+            self.meal_list[index].change_name(3)
+
 
     def remove_meal(self, index):
         self.meal_list.pop(index)
