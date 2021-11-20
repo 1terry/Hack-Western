@@ -16,33 +16,33 @@ class FoodItem:
         self.calories = calories
         self.dictonary = {} # Create an empty dictionary 
     
-    def getName (self):
+    def get_name (self):
         return self.name
     
-    def getCalories (self):
+    def get_calories (self):
         return self.calories
     
-    def getDictonary (self):
+    def get_dictonary (self):
         return self.dictonary
 
     # Might not need this one 
-    def changeName(self, newName):
-        self.name = newName
+    def change_name(self, new_name):
+        self.name = new_name
      
-    def changeCalories (self, newCalorie):
-        self.calories = newCalorie
+    def change_calories (self, new_calorie):
+        self.calories = new_calorie
     
     # Method to add items to the dictionary. It returns -1 if there is an error 
     # or it returns 0 if it is able to add an item.
-    def addItem (self, newItem, newItemValue):
+    def add_item (self, new_item, new_item_value):
         
         # If the value is in the dictionary already
-        if (newItem in self.dictonary):
+        if (new_item in self.dictonary):
             return -1
 
         # We can add the item and its value
         else:
-            self.dictionary [newItem] = newItemValue
+            self.dictionary [new_item] = new_item_value
             return 0
         
 
