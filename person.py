@@ -62,29 +62,29 @@ class person:
     def return_maintenance (self):
     
         if (self.exercise_level == "little"):
-            return (self.__get_bmr() * 1.2)
+            return (int(self.__get_bmr() * 1.2))
 
         elif (self.exercise_level == "light"):
-            return (self.__get_bmr() * 1.4)
+            return (int(self.__get_bmr() * 1.4))
 
         elif (self.exercise_level == "moderate"):
-            return (self.__get_bmr() * 1.6)
+            return (int(self.__get_bmr() * 1.6))
 
         elif (self.exercise_level == "hard"):
-            return (self.__get_bmr() * 1.75)
+            return (int(self.__get_bmr() * 1.75))
 
         elif (self.exercise_level == "work"):
-            return (self.__get_bmr() * 2.0)
+            return (int(self.__get_bmr() * 2.0))
 
         elif (self.exercise_level == "athlete"):
-            return (self.__get_bmr() * 2.4)
+            return (int(self.__get_bmr() * 2.4))
 
         else:
             return -1
 
     # Return the bulking calories.
     def return_bulking (self):
-        return (self.return_maintenance() * 1.10)
+        return (int(self.return_maintenance() * 1.10))
 
     # Return the calories for losing.
     # "moderate": 5% decrease in calories
@@ -92,10 +92,10 @@ class person:
     def return_losing (self, lose_rate):
 
         if (lose_rate == "moderate"):
-            return (self.return_maintenance() * 0.95)
+            return (int(self.return_maintenance() * 0.95))
         
         elif (lose_rate == "insane"):
-            return (self.return_maintenance * 0.90)
+            return (int(self.return_maintenance() * 0.90))
 
         # An error occurred.
         else:
