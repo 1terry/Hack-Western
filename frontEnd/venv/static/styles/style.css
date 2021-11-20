@@ -16,19 +16,22 @@
 }
 
 .sec2{
-    height:100vh;
+    min-height:100vh;
     width: 100vw;
     background-color: rgb(218, 132, 136);
 }
 
-.welcome-header{
+.Welcome{
+    
     margin:auto;
+    padding-top: 50px;
     text-align: center;
 }
 
 .intro-header{
     margin: auto;
     text-align: center;
+    margin-top: 20%;
 }
 
 .btn-light{
@@ -48,7 +51,15 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+}
+
+.weight{
+    margin-top: 15px;
+}
+
+.checkbox{
+    margin-top: 10px;
 }
 
 .form-holder .form-content {
@@ -64,6 +75,12 @@
   -webkit-align-items: center;
   align-items: center;
   padding: 60px;
+}
+
+.select-text{
+    left: 0px;
+    position: absolute;  
+    text-align: left;
 }
 
 .form-content .form-items {
@@ -85,7 +102,7 @@
   text-align: left;
   font-size: 28px;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 50px;
 }
 
 .form-content h3.form-title {
@@ -130,12 +147,12 @@
    box-shadow: none;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+/* .btn-primary:hover, .btn-primary:focus, .btn-primary:active{
   background-color: #495056;
   outline: none !important;
   border: none !important;
    box-shadow: none;
-}
+} */
 
 .form-content textarea {
   position: static !important;
