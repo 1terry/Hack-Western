@@ -20,9 +20,9 @@ CORS(app)
 def home():
     return ("<h1>Welcome to the server</h1>")
 
-@app.route('/api/', methods = ['ACCOUNT', 'MODIFYACCOUNT', 'ADDMEAL', 'MODIFYMEAL'])
+@app.route('/api/', methods = ['ACCOUNT', 'MODIFYACCOUNT', 'ADDMEAL', 'MODIFYMEAL', 'DELETEMEAL'])
 def postmethod():
-    
+
 
     # If the request is an account creation.
     if request.method == 'ACCOUNT':
@@ -39,9 +39,14 @@ def postmethod():
     # If the server wants to modify a meal
     elif request.method == 'MODIFYMEAL'
 
-    # We will need to get stuff from the frontend.
 
-    return 0
+    # If the server wishes to delete a meal.
+    elif request.method == 'DELETEMEAL'
+
+
+    # We will send something to the server if there is some other request being made.
+    else:
+        return -1
 
 if __name__ == "__main__":
     app.run(debug = True)
