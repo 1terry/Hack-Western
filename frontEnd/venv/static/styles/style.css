@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
+#div-1 { overflow: hidden; }
+
+
 .body{
-    margin:0;
-    padding:0;
-    
-    all: initial;
-    * {
-        all: unset;
-    }
-      
-}
+   /* overflow-y: hidden; */
+}    
 
 .welcome-header{
     margin:auto;
@@ -17,11 +13,15 @@
 }
 
 .intro-header{
-    margin:auto;
+    margin: auto;
     text-align: center;
 }
 
 .btn-light{
     margin:auto;
     text-align: center;
+}
+
+::-webkit-scrollbar{
+    display: none;
 }
