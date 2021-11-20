@@ -7,6 +7,16 @@
    /* overflow-y: hidden; */
 }    
 
+.sec1{
+    height:100vh;
+    background-color: beige;
+}
+
+.sec2{
+    height:100vh;
+    background-color: rgb(218, 132, 136);
+}
+
 .welcome-header{
     margin:auto;
     text-align: center;
