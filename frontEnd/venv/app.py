@@ -17,6 +17,7 @@ user = person("male", 1, 1, 1, "light")
 mealList = []
 itemList = []
 newDict = {}
+calorieCount = 0
 
 
 @app.route ("/")
@@ -37,23 +38,27 @@ def getList():
             foodItem = form_data.get('foodItem')
             currentFoods.append(foodItem)
         
-        foodItem = foodItemList[0]
+        # foodItem = foodItemList[0]
         for i in foodItemList:
             
             brandName = i.get_brand()
             itemName = i.get_name()
             listItem = itemName + ", brand: " + brandName
-            print(listItem)
+            # print(listItem)
             print("Food item: ", foodItem)
             if (listItem == foodItem):
                 foodItem = i
                 break
 
         user.return_meal_at(0).add_foods(foodItem)
-        print(user.calculate_daily_nutrient_profile())
+        # print(user.calculate_daily_nutrient_profile())
         
         global nutritionInfo
         nutritionInfo = user.calculate_daily_nutrient_profile()
+        global calorieCount
+        calorieCount = user.calculate_total_cal()
+
+        print(calorieCount)
 
         keys = nutritionInfo.keys()
 
@@ -68,10 +73,10 @@ def getList():
             newDict[newKey] = nutritionInfo[key]
             
 
-            
+        
             
         print(newDict)
-        return render_template('index.html', nutrition_data = newDict, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
+        return render_template('index.html', nutrition_data = newDict, calories = calorieCount, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
 
                                         
 @app.route('/foodData', methods = ['GET', 'POST'])
@@ -111,7 +116,8 @@ def foodData():
             print("List of foods: " , foods)
             print("Foods" , foodNames)
 
-        return render_template('index.html', nutrition_data = nutritionInfo, form_data = foodNames, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
+        return render_template('index.html', nutrition_data = nutritionInfo, 
+        calories = calorieCount, form_data = foodNames, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
     
 
 

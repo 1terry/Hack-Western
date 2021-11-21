@@ -29,7 +29,7 @@
       </button> -->
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button class="btn btn-primary me-md-2" type="button">General Tips</button>
-        <button class="btn btn-primary" type="button">Contact</button>
+        <!-- <button class="btn btn-primary" type="button">Contact</button> -->
       </div>
     </div>
   </nav>
@@ -39,8 +39,9 @@
 
   <div class="container sec1" id="top">
     <div>
-      <h1 class="Welcome">welcome to CaLloRIe CalLaBuNGa</h1>
-      <h1 class="intro-header"> what is your goal?</h1>
+      <h1 class="Welcome">welcome to</h1>
+      <h1 class="Title"> NutriPower</h1>
+      <h1 class="intro-header"> <i>what is your goal?</i></h1>
     </div>
 
     <div class="d-grid gap-4 col-6 mx-auto">
@@ -154,7 +155,16 @@
         {% for value in selected_items %}
           <p class="items"> {{ value }} </p>
         {% endfor %}    
-        <h3 class="">Total calories:</h3> 
+        
+        <h3 class="calories">Total calories:
+          {% if calories %} 
+          <p> {{ calories }} </p>
+          {% endif %}
+        </h3> 
+      </div>
+
+      <div class="press-enter">
+        <h5>Press enter to find some results!</h5>
       </div>
 
 

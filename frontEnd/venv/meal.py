@@ -28,15 +28,15 @@ class meal:
         brand = food_item.get_brand()
         calories = food_item.get_calories()
 
-        self.calories = self.calories + float(calories)
+        self.calories = self.calories + int(calories)
 
         if len(self.nutrition_dictionary) == 0:
             self.nutrition_dictionary = food_item.get_dictionary()
         else:
-            for i in self.nutrition_dictionary:
+            for i in food_item.get_dictionary():
                 if (i != 'nf_serving_size_unit') and (i != 'nf_serving_size_qty'):
                     if food_item.get_dictionary()[i] != 'null':
-                        self.nutrition_dictionary[i] = round(float(self.nutrition_dictionary[i]), 2) + round(float(food_item.get_dictionary()[i]), 2)
+                        self.nutrition_dictionary[i] = float(self.nutrition_dictionary[i]) + float(food_item.get_dictionary()[i])
 
         self.list_of_foods.append(food_item)
 

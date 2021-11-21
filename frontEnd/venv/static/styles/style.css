@@ -75,12 +75,33 @@
 
 .items-header{
   margin-top: 10px;
+  text-align: center;
 }
 
 .subtitile{
   font-weight: 100;
   margin-top: 20px;
   position:relative;
+}
+
+.calories{
+  text-align: center;
+}
+
+.press-enter{
+  bottom: 15px;
+  margin: auto;
+  text-align: center;
+  width: 100vw;
+  position: absolute;
+  
+  z-index: -5;
+}
+
+.Title{
+  margin: auto;
+  text-align: center;
+  font-size: 100px;
 }
 
 .userItems{
@@ -146,13 +167,13 @@
 
 .currentItems{
   float:left;
-  height:60vh;
+  height:55vh;
   width: 25vw;
   background: white;
   border-radius: 25px;
   left: 45px;
   position: absolute;
-  margin-top: 50px;
+  margin-top: 80px;
   box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, 
   rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }

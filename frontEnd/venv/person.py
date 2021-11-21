@@ -164,19 +164,7 @@ class person:
         return self.return_bulking() - self.calculate_total_cal()
 
     def calculate_total_cal(self):
-        for i in self.meal_list:
-            self.total_cal = self.total_cal + i.total_cal()
-        return self.total_cal
+        return self.return_meal_at(0).total_cal()
 
     def calculate_daily_nutrient_profile(self):
-        for i in self.meal_list:
-            if len(self.nutrition_profile) == 0:
-                if len(i.return_nutrient_profile()) != 0:
-                    self.nutrition_profile = i.return_nutrient_profile()
-            else:
-                if len(i.return_nutrient_profile()) != 0:
-                    for j in i.return_nutrient_profile():
-                        if (j != 'nf_serving_size_unit') and (j != 'nf_serving_size_qty'):
-                            if i.return_nutrient_profile()[j] != 'null':
-                                self.nutrition_profile[j] = round(float(self.nutrition_profile[j]), 2) + round(float(i.return_nutrient_profile()[j]), 2)
-        return self.nutrition_profile
+        return self.return_meal_at(0).return_nutrient_profile()
