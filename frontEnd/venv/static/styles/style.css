@@ -16,7 +16,7 @@
 }
 
 .sec2{
-    max-height:100vh;
+    height:100vh;
     width: 100vw;
     background-color: rgb(218, 132, 136);
 }
@@ -219,14 +219,25 @@
     
 }
 
+/*For screens using a higher resolution*/
 @media (min-resolution: 120dpi){
     .sec1{
         top: 0px;
-        position: aboslute;
-        transform: scale(0.9);
+        height: 100vh;
+        /* position: aboslute; */
+        margin-top: 45px;
+        /* transform: scale(0.9); */
     }
 
     .sec2{
-        transform: scale(0.9);
+        /* transform: scale(0.9); */
+        height: 100vh;
+        top: 100vh;
     }
+
+    .form-body{
+        transform: scale(0.8);
+        margin-top: -100px;
+    }    
+
 }
