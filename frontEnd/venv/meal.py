@@ -28,7 +28,7 @@ class meal:
         brand = food_item.get_brand()
         calories = food_item.get_calories()
 
-        self.calories = self.calories + int(calories)
+        self.calories = self.calories + float(calories)
 
         if len(self.nutrition_dictionary) == 0:
             self.nutrition_dictionary = food_item.get_dictionary()
