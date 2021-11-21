@@ -39,7 +39,8 @@ class meal:
         else:
             for i in self.__nutrition_dictionary:
                 if (i != 'nf_serving_size_unit') and (i != 'nf_serving_size_qty'):
-                    self.__nutrition_dictionary[i] = round(float(self.__nutrition_dictionary[i]), 2) + round(float(food_item.get_dictionary()[i]), 2)
+                    if food_item.get_dictionary()[i] != 'null':
+                        self.__nutrition_dictionary[i] = round(float(self.__nutrition_dictionary[i]), 2) + round(float(food_item.get_dictionary()[i]), 2)
 
         self.__list_of_foods.append(food_item)
 
