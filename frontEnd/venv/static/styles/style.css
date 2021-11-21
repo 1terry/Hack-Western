@@ -73,14 +73,60 @@
 
 }
 
+.items-header{
+  margin-top: 10px;
+}
+
+.subtitile{
+  font-weight: 100;
+  margin-top: 20px;
+  position:relative;
+}
+
 .userItems{
   float:left;
-  height:60vh;
+  height:23vh;
   width: 25vw;
   background: white;
-  border-radius: 75px;
-  text-align: center;
+  border-radius: 15px;
   margin-left: 30px; 
+  margin-top: -180px;
+}
+
+.user-title{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.items{
+  margin-left: 10px;
+}
+
+.left{
+  right: 0px;
+}
+
+.center-form{
+  width: 36vw;
+  margin:auto;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+
+.nutrition{
+  float: right;
+  position: absolute;
+  right: 0px;
+  margin-right: -560px;
+  height: 60vh;
+  margin-top: -175px;
+  width: 25vw;
+  background-color: rgb(255, 255, 255);
+}
+
+.nutrtion-header{
+  text-align: center;
 }
 
 .currentItems{
@@ -88,11 +134,16 @@
   height:60vh;
   width: 25vw;
   background: white;
-  border-radius: 75px;
-  text-align: center;
-  margin-left: 30px;
-  margin-top: 100px;
+  border-radius: 25px;
+  left: 45px;
+  position: absolute;
+  margin-top: 50px;
  
+}
+
+.text-format{
+  margin-top: -15px;
+  margin-left: 20px;
 }
 
 .centered-div{
@@ -114,6 +165,7 @@
     z-index: 10;
     /* color:red; */
     margin-top: 150px;
+    margin-bottom: 30px;
     /* text-align: center; */
 }
 

@@ -136,43 +136,65 @@
     <div class="container sec3" id="end">
         <div class="centered-div">
             <h1 class="food-header">What are we eating today?</h1>
+            <h4 class="subtitle"> Click the search button to get started!</h4>
         </div>
 
-    
-      <!-- <div class="currentItems"> 
-        <h1>Current items</h1> -->
-        <!-- <br>
-        {% for value in selected_items%}
-        <p> {{ value }} </p>
+      <div class="userItems">
+        <h1 class="user-title">User Info</h1>
+        {% for value in person_data %}
+        <tr>
+             <p class="text-format"> {{ value }} <p>
+        </tr>
+      {% endfor %}
+      </div>
+
+      {% if selected_items|length > 0 %}
+      <div class="currentItems"> 
+        <h1 class="items-header">Current items</h1> 
+        <br>
+        {% for value in selected_items %}
+          <p class="items"> {{ value }} </p>
         {% endfor %}    
-        <h3>Total calories</h3> -->
-      <!-- </div> -->
+        <h3 class="">Total calories:</h3> 
+      </div>
+      {% endif %}
 
 
       <div id="wrap" class="foods">
+
+        <!-- food search -->
         <form autocomplete="off" novalidate action="/foodData" method = "POST">
         <input id="search" name="food" type="text" placeholder="What're we looking for ? " onclick='window.location="#end"'>
         <input id="search_submit" name="food" value="Rechercher" type="submit" onclick='window.location="#end"'>
         </form>
-        <div class="foodList">
 
-        {% if form_data|length > 0 %}
-        <form autocomplete="on" novalidate action="/toList" method = "POST">
-        
+        <div class="foodList">
+        <!-- {% if form_data|length > 0 %} -->
+
+        <!-- getting new foodsies -->
+        <form autocomplete="on" novalidate action="/toList" method = "POST" class="center-form">
+          <!-- Does not show up -->
           <tr>
-              <select name="exercise" class="form-select mt-3 exercise" required>
+              <select name="foodItem" class="form-select mt-3 foodItems" required>
                {% for value in form_data%}
-               <option> {{ value }} </option>
+               <option value="{{ value }}"> {{ value }} </option>
                {% endfor %}        
               </select>
           </tr>
-          <div class="form-button mt-3">
+          <div class="form-button mt-3 left">
             <button id="submit" type="submit" class="btn btn-primary">Add</button>
           </div>
         </form>
-        {% endif %}
+        <!-- {% endif %} -->
         </div>
 
+      </div>
+
+      <div class="nutrition">
+        <h1 class="nutrition-header"> Nutrition Info </h1>
+        {% for value in nutrition_data%}
+        <p value="{{ value }}"> {{ value }} </p>
+        {% endfor %}   
       </div>
 
 
