@@ -50,6 +50,10 @@
 }
 
 
+.foodList{
+    margin-top: 100px;
+}
+
 /* Section 2 */
 
 .sec2{
@@ -69,18 +73,48 @@
 
 }
 
-.centered-div{
-    margin: auto;
-    text-align: center;
+.userItems{
+  float:left;
+  height:60vh;
+  width: 25vw;
+  background: white;
+  border-radius: 75px;
+  text-align: center;
+  margin-left: 30px; 
 }
 
+.currentItems{
+  float:left;
+  height:60vh;
+  width: 25vw;
+  background: white;
+  border-radius: 75px;
+  text-align: center;
+  margin-left: 30px;
+  margin-top: 100px;
+ 
+}
+
+.centered-div{
+  width:100vw;
+  margin: auto;
+  text-align: center;
+}
+
+.pickFood:hover{
+  color: wheat;
+}
+
+.foods{
+  float:right;
+}
 
 .food-header{
     font-size: 60px;
     z-index: 10;
     /* color:red; */
     margin-top: 150px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 

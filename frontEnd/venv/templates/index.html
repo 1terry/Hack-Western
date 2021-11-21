@@ -65,7 +65,7 @@
                     <div class="form-content">
                         <div class="form-items">
                             <h3>Fill in the data below</h3>
-                            <form class="requires-validation" novalidate>
+                            <form class="requires-validation" novalidate action="/data" method = "POST">
 
                                 <div class="col-md-12">
                                     <input class="form-control" type="number" name="age" placeholder="Age" required>
@@ -76,13 +76,13 @@
                                 <div class="col-md-12 mt-3">
                                     <label class="mb-3 mr-1" for="gender">Gender: </label>
 
-                                    <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off" required>
+                                    <input type="radio" class="btn-check" name="gender" value="male" id="male" autocomplete="off" required>
                                     <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
 
-                                    <input type="radio" class="btn-check" name="gender" id="female" autocomplete="off" required>
+                                    <input type="radio" class="btn-check" name="gender" value="female" id="female" autocomplete="off" required>
                                     <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
 
-                                    <input type="radio" class="btn-check" name="gender" id="secret" autocomplete="off" required>
+                                    <input type="radio" class="btn-check" name="gender" value="email" id="secret" autocomplete="off" required>
                                     <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
                                     <div class="valid-feedback mv-up">You selected a gender!</div>
                                     <div class="invalid-feedback mv-up">Please select a gender!</div>
@@ -101,18 +101,15 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <select class="form-select mt-3 exercise" required>
+                                    <select name="exercise" class="form-select mt-3 exercise" required>
                                         <option selected disabled value="" class="chosen-text">Exercise</option>
-                                        <option value="1" class="select-text">Little</option>
-                                        <option value="2" class="select-text">Light</option>
-                                        <option value="3" class="select-text">Moderate</option>
-                                        <option value="4" class="select-text">Hard</option>
-                                        <option value="5" class="select-text">Work</option>
-                                        <option value="6" class="select-text">Athlete</option>
+                                        {% for o in data %}
+                                        <option value="{{ o.name }}">{{ o.name }}</option>
+                                        {% endfor %}
                                     </select>
 
                                     <div class="valid-feedback">You selected an Exercise Level!</div>
-                                    <div class="invalid-feedback">Please select an Exdercise Level!</div>
+                                    <div class="invalid-feedback">Please select an Exercise Level!</div>
                                 </div>
 
                                 <div class="form-check checkbox">
@@ -140,6 +137,45 @@
         <div class="centered-div">
             <h1 class="food-header">What are we eating today?</h1>
         </div>
+
+    
+      <!-- <div class="currentItems"> 
+        <h1>Current items</h1> -->
+        <!-- <br>
+        {% for value in selected_items%}
+        <p> {{ value }} </p>
+        {% endfor %}    
+        <h3>Total calories</h3> -->
+      <!-- </div> -->
+
+
+      <div id="wrap" class="foods">
+        <form autocomplete="off" novalidate action="/foodData" method = "POST">
+        <input id="search" name="food" type="text" placeholder="What're we looking for ? " onclick='window.location="#end"'>
+        <input id="search_submit" name="food" value="Rechercher" type="submit" onclick='window.location="#end"'>
+        </form>
+        <div class="foodList">
+
+        {% if form_data|length > 0 %}
+        <form autocomplete="on" novalidate action="/toList" method = "POST">
+        
+          <tr>
+              <select name="exercise" class="form-select mt-3 exercise" required>
+               {% for value in form_data%}
+               <option> {{ value }} </option>
+               {% endfor %}        
+              </select>
+          </tr>
+          <div class="form-button mt-3">
+            <button id="submit" type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+        {% endif %}
+        </div>
+
+      </div>
+
+
     </div>
 
 
@@ -178,6 +214,13 @@
         })
     })()
 
-</script>
 
+</script>
+{% if scrollToAnchor %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.location.hash = '#{{ scrollToAnchor }}';
+    });
+</script>
+{% endif %}
 <!--- Script for Form Ends-->
