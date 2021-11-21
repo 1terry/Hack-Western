@@ -1,0 +1,25 @@
+Index: frontEnd/venv/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontEnd/venv/main.py b/frontEnd/venv/main.py
+new file mode 100644
+--- /dev/null	(date 1637461725500)
++++ b/frontEnd/venv/main.py	(date 1637461725500)
+@@ -0,0 +1,15 @@
++from FoodItem import FoodItem
++from meal import meal
++from API import API
++from person import person
++
++terry = person('male', 170, 80, 19, 'little')
++terry.return_meal_at(0).add_foods('apple', 0)
++terry.return_meal_at(1).add_foods('beef', 0)
++print(terry.return_maintenance())
++terry.calculate_recommended()
++print(terry.calculate_daily_nutrient_profile())
++print(terry.return_missing_nutrients())
++
++
++

@@ -1,3 +1,7 @@
+"""
+API Class to call the Nutrionix API
+"""
+
 class API:
 
     def __init__(self):
@@ -10,7 +14,6 @@ class API:
         }
 
     def call_api(self, item_name):
-
         split_name = item_name.split(' ')
         item_string = ''
         start = True

@@ -8,51 +8,38 @@ November 19, 2021
 """
 
 from API import API
-NAME = 'item_name'
-BRAND = 'brand_name'
-CALORIES = 'nf_calories'
-# Class definition 
+
+# Class definition
 class FoodItem:
     api = API()
 
     # Constructor for the class.
 
-    def __init__(self, name):
-        self.food_list = self.api.call_api(name)  # Name of the object
-        self.name = ''
-        self.brand = ''
-        self.calories = ''
-        self.dictionary = {}
-        self.food_choice = self.food_list[0]
-
-    def return_entire_foods_list(self):
-        return self.food_list
+    def __init__(self, food_name, food_brand, food_calories, food_dict):
+        self.__name = food_name
+        self.__brand = food_brand
+        self.__calories = food_calories
+        self.__dictionary = food_dict
 
     def get_name (self):
-        return self.name
+        return self.__name
 
     def get_brand (self):
-        return self.brand
-    
+        return self.__brand
+
     def get_calories (self):
-        return self.calories
-    
+        return self.__calories
+
     def get_dictionary (self):
-        return self.dictionary
+        return self.__dictionary
 
-    # Might not need this one 
+    # Might not need this one
     def change_name(self, new_name):
-        self.name = new_name
-     
-    def change_calories (self, new_calorie):
-        self.calories = new_calorie
+        self.__name = new_name
 
-    def choose(self, index):
-        self.food_choice = self.food_list[index]
-        self.name = self.food_choice.pop(NAME)
-        self.brand = self.food_choice.pop(BRAND)
-        self.calories = self.food_choice.pop(CALORIES)
-        self.dictionary = self.food_choice
+    def change_calories(self, new_calorie):
+        self.__calories = new_calorie
+
     # Method to add items to the dictionary. It returns -1 if there is an error 
     # or it returns 0 if it is able to add an item.
 
