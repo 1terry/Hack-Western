@@ -219,12 +219,14 @@
     
 }
 
-@media (resolution: 120dpi){
+@media (min-resolution: 120dpi){
     .sec1{
-        transform: scale(0.7);
+        top: 0px;
+        position: aboslute;
+        transform: scale(0.9);
     }
 
     .sec2{
-        transform: scale(0.7);
+        transform: scale(0.9);
     }
 }
