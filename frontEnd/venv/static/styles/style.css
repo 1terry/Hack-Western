@@ -91,6 +91,8 @@
   border-radius: 15px;
   margin-left: 30px; 
   margin-top: -180px;
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, 
+  rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }
 
 .user-title{
@@ -116,17 +118,30 @@
 
 .nutrition{
   float: right;
-  position: absolute;
   right: 0px;
   margin-right: -560px;
-  height: 60vh;
+  height: 85vh;
   margin-top: -175px;
   width: 25vw;
+  position: absolute;
   background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, 
+  rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }
 
-.nutrtion-header{
+.info{
+  margin-left: 15px;
+  left: 50px;
+}
+
+
+.nut-header{
+  /* position: absolute; */
+  left: 50px;
+  /* margin-left: 50px; */
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .currentItems{
@@ -138,7 +153,8 @@
   left: 45px;
   position: absolute;
   margin-top: 50px;
- 
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, 
+  rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }
 
 .text-format{
@@ -186,7 +202,7 @@
     /* margin-top: 76px; */
     position: absolute;
     z-index: -20;
-    background-color: rgb(241, 165, 229);
+    background-color: rgb(247, 231, 244);
 }
 
 ::-webkit-scrollbar{

@@ -11,8 +11,13 @@ app = Flask (__name__)
 userInfo = []
 currentFoods = []
 nutritionInfo = {}
+foodItemList = []
+personInfo = {}
 user = person("male", 1, 1, 1, "light")
 mealList = []
+itemList = []
+newDict = {}
+
 
 @app.route ("/")
 def home():
@@ -31,12 +36,42 @@ def getList():
         for key,value in form_data.items():
             foodItem = form_data.get('foodItem')
             currentFoods.append(foodItem)
+        
+        foodItem = foodItemList[0]
+        for i in foodItemList:
+            
+            brandName = i.get_brand()
+            itemName = i.get_name()
+            listItem = itemName + ", brand: " + brandName
+            print(listItem)
+            print("Food item: ", foodItem)
+            if (listItem == foodItem):
+                foodItem = i
+                break
 
-            person.add_meal()
-            person.calculate_daily_nutrient_profile()
+        user.return_meal_at(0).add_foods(foodItem)
+        print(user.calculate_daily_nutrient_profile())
+        
+        global nutritionInfo
+        nutritionInfo = user.calculate_daily_nutrient_profile()
 
-        print(currentFoods)
-        return render_template('index.html', selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
+        keys = nutritionInfo.keys()
+
+        global newDict
+
+        for key in nutritionInfo:
+            oldKey = key
+            newKey = key
+            newKey = newKey.replace("nf_", "")
+            newKey = newKey.replace("_", " ")
+            # print(key, nutritionInfo[key])
+            newDict[newKey] = nutritionInfo[key]
+            
+
+            
+            
+        print(newDict)
+        return render_template('index.html', nutrition_data = newDict, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
 
                                         
 @app.route('/foodData', methods = ['GET', 'POST'])
@@ -53,6 +88,7 @@ def foodData():
         count = 0
         global currentFoods
         global nutritionInfo
+        global foodItemList
         for key,value in form_data.items():
             if (count == 0):
                 print(value)
@@ -63,17 +99,19 @@ def foodData():
                     itemName = i.get_name()
                     foodName = itemName + ", brand: " + brandName
                     foodNames.append(foodName)
-                    
-                    
+                    foodItemList.append(i)
+                                        
                 # print("filler")
            
                 # return_dictionary ["Food"] = value
             count = count + 1     
+
+            
             # print(form_data)
             print("List of foods: " , foods)
             print("Foods" , foodNames)
 
-        return render_template('index.html', form_data = foodNames, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
+        return render_template('index.html', nutrition_data = nutritionInfo, form_data = foodNames, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
     
 
 
@@ -137,11 +175,14 @@ def data():
     
         print("number of items: ", counter)
         # Create a temporary person with the given attributes 
+       
+        # Kohei = person(sex, height, weight, age, exercise_level)
         global user
+
         user.change_age(age)
-        user.change_exercise_level(exercise_level)
-        user.change_height(height)
         user.change_weight(weight)
+        user.change_exercise_level(exercise)
+        user.change_height(height)
         user.change_sex(sex)
 
         # Add the final condition that the user has selected.
@@ -152,8 +193,9 @@ def data():
         elif (condition.lower() == "losing"):
             return_dictionary.append("Maintenence Calorie Count: " + str(user.return_losing("moderate")))
 
-        global userInfo 
+        global userInfo
         userInfo = return_dictionary
+        Kohei = return_dictionary
 
         # Returns a dictionary 
         return render_template('index.html', person_data = return_dictionary, scrollToAnchor='end')

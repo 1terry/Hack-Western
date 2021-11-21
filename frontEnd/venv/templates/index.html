@@ -148,7 +148,6 @@
       {% endfor %}
       </div>
 
-      {% if selected_items|length > 0 %}
       <div class="currentItems"> 
         <h1 class="items-header">Current items</h1> 
         <br>
@@ -157,7 +156,6 @@
         {% endfor %}    
         <h3 class="">Total calories:</h3> 
       </div>
-      {% endif %}
 
 
       <div id="wrap" class="foods">
@@ -191,10 +189,12 @@
       </div>
 
       <div class="nutrition">
-        <h1 class="nutrition-header"> Nutrition Info </h1>
-        {% for value in nutrition_data%}
-        <p value="{{ value }}"> {{ value }} </p>
+        <h1 class="nut-header">         Nutrition Info </h1>
+        {% if nutrition_data|length > 0 %}
+        {% for key, value in nutrition_data.items() %}
+        <p class="info" value="{{ value }}"> {{ key }}: {{ value }}</p>
         {% endfor %}   
+        {% endif %}
       </div>
 
 
