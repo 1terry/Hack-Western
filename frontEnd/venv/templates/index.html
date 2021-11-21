@@ -3,6 +3,7 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/animated_styles.css')}}">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +39,7 @@
 
   <div class="container sec1" id="top">
     <div>
-      <h1 class="Welcome">welcome to <b>C</b>alorie <b>O</b>bserver <b>W</b>ebapp</h1>
+      <h1 class="Welcome">welcome to CaLloRIe CalLaBuNGa</h1>
       <h1 class="intro-header"> what is your goal?</h1>
     </div>
 
@@ -53,9 +54,9 @@
   <!-- Page 2-->
     <div class="container sec2" id="middle">
         <br><br><br><br><br>
-        <div >
+        <div class="center-button">
         <button class="btn btn-primary me-md-2" onclick='window.location="#"' type="button">Go Back</button>
-        Testing to see if this works
+        <!-- Testing to see if this works -->
         </div>
         <!--- Form Logic Starts-->
         <div class="form-body">
@@ -121,7 +122,7 @@
                                 </div>               
 
                                 <div class="form-button mt-3">
-                                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                                    <button id="submit" type="submit" class="btn btn-primary" onclick='window.location="#end"'>Submit</button>
                                 </div>
 
                             </form>
@@ -130,32 +131,25 @@
                 </div>
             </div>
         </div>
-
         <!--- Form Logic Ends-->
-
-        <!--- Script for Form to check if all the fileds were filled-->
-        <script>
-            (function () {
-            'use strict'
-            const forms = document.querySelectorAll('.requires-validation')
-            Array.from(forms)
-                .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                }, false)
-                })
-            })()
-
-        </script>
-
-        <!--- Script for Form Ends-->
-
-
     </div>
+
+
+    <!--Page 3-->
+    <div class="container sec3" id="end">
+        <div class="centered-div">
+            <h1 class="food-header">What are we eating today?</h1>
+        </div>
+    </div>
+
+
+
+    <!--Backgrounds-->
+    <span class="background1"></span>
+    <span class="background2"></span>
+    <span class="background3"></span>
+
+
 
 </body>
 <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -163,3 +157,27 @@
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </html>
+
+
+
+
+        <!--- Script for Form to check if all the fileds were filled-->
+<script>
+    (function () {
+    'use strict'
+    const forms = document.querySelectorAll('.requires-validation')
+    Array.from(forms)
+        .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+        })
+    })()
+
+</script>
+
+<!--- Script for Form Ends-->

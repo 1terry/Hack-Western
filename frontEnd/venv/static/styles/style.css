@@ -1,28 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 
 #div-1 { overflow: hidden; }
 
 
 .body{
    /* overflow-y: hidden; */
-   
+   font-family: 'Roboto', sans-serif;
 }    
 
+/* Section 1 */
 .sec1{
     margin-top:76px;
     height:100vh;
     width: 100vw;
-    background-color: beige;
-}
-
-.sec2{
-    height:100vh;
-    width: 100vw;
-    background-color: rgb(218, 132, 136);
+    /* background-color: beige; */
 }
 
 .Welcome{
-    
     margin:auto;
     padding-top: 50px;
     text-align: center;
@@ -39,9 +35,90 @@
     text-align: center;
 }
 
+.center-button{
+    margin: auto;
+    text-align: center;
+}
+
+.background1{
+    height: 100vh;
+    width: 100vw;
+    top:0px;
+    position: absolute;
+    z-index: -5;
+    background-color: cornsilk;
+}
+
+
+/* Section 2 */
+
+.sec2{
+    height:100vh;
+    width: 100vw;
+    /* background-color: rgb(218, 132, 136); */
+}
+
+
+/* Section 3 */
+.sec3{
+    top: 200vh;
+    position: absolute;
+    height:100vh;
+    width: 100vw;
+
+
+}
+
+.centered-div{
+    margin: auto;
+    text-align: center;
+}
+
+
+.food-header{
+    font-size: 60px;
+    z-index: 10;
+    /* color:red; */
+    margin-top: 150px;
+    text-align: center;
+}
+
+
+.background2{
+    height: 100vh;
+    width: 100vw;
+    top:108vh;
+    position: absolute;
+    z-index: -10;
+    background-color: rgb(171, 228, 245);
+}
+
+.background3{
+    height: 100vh;
+    width: 100vw;
+    top:200vh;
+    /* margin-top: 76px; */
+    position: absolute;
+    z-index: -20;
+    background-color: rgb(241, 165, 229);
+}
+
 ::-webkit-scrollbar{
     display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*CSS for forms starts*/
 
@@ -147,12 +224,6 @@
    box-shadow: none;
 }
 
-/* .btn-primary:hover, .btn-primary:focus, .btn-primary:active{
-  background-color: #495056;
-  outline: none !important;
-  border: none !important;
-   box-shadow: none;
-} */
 
 .form-content textarea {
   position: static !important;
