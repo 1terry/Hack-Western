@@ -1,4 +1,4 @@
-# Hack-Western
+# Nutri-Power: Personal callorie and micronutrient counter
 Created for Hack Western 8
 
 Authors: 
