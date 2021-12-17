@@ -1,4 +1,4 @@
-# Nutri-Power: Personal callorie and micronutrient counter
+# Nutri-Power: Personal calorie and micronutrient counter
 Created for Hack Western 8
 
 Authors: 
