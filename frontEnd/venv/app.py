@@ -1,11 +1,11 @@
-from flask import Flask,render_template,request, url_for
+from flask import Flask, render_template, request, url_for
 from person import person
 from API import API
 from FoodItem import FoodItem
 from foodList import foodList
 from meal import meal
 
-app = Flask (__name__)
+app = Flask(__name__)
 # CORS(app)
 
 userInfo = []
@@ -20,27 +20,27 @@ newDict = {}
 calorieCount = 0
 
 
-@app.route ("/")
+@app.route("/")
 def home():
-    return render_template('index.html',  
-    data=[{'name':'little'},{'name':'light'},{'name':'moderate'},{'name':'hard'},{'name':'work'},{'name':'athlete'}])
-    
+    return render_template('index.html',
+                           data=[{'name': 'little'}, {'name': 'light'}, {'name': 'moderate'}, {'name': 'hard'}, {'name': 'work'}, {'name': 'athlete'}])
 
-@app.route('/toList', methods = ['GET', 'POST'])
+
+@app.route('/toList', methods=['GET', 'POST'])
 def getList():
     if request.method == 'GET':
-       print("Should never GET")
+        print("Should never GET")
 
     if request.method == 'POST':
         form_data = request.form
         global currentFoods
-        for key,value in form_data.items():
+        for key, value in form_data.items():
             foodItem = form_data.get('foodItem')
             currentFoods.append(foodItem)
-        
+
         # foodItem = foodItemList[0]
         for i in foodItemList:
-            
+
             brandName = i.get_brand()
             itemName = i.get_name()
             listItem = itemName + ", brand: " + brandName
@@ -52,7 +52,7 @@ def getList():
 
         user.return_meal_at(0).add_foods(foodItem)
         # print(user.calculate_daily_nutrient_profile())
-        
+
         global nutritionInfo
         nutritionInfo = user.calculate_daily_nutrient_profile()
         global calorieCount
@@ -71,30 +71,27 @@ def getList():
             newKey = newKey.replace("_", " ")
             # print(key, nutritionInfo[key])
             newDict[newKey] = nutritionInfo[key]
-            
 
-        
-            
         print(newDict)
-        return render_template('index.html', nutrition_data = newDict, calories = calorieCount, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
+        return render_template('index.html', nutrition_data=newDict, calories=calorieCount, selected_items=currentFoods, person_data=userInfo, scrollToAnchor='end')
 
-                                        
-@app.route('/foodData', methods = ['GET', 'POST'])
+
+@app.route('/foodData', methods=['GET', 'POST'])
 def foodData():
     if request.method == 'GET':
-       print("Should never GET")
+        print("Should never GET")
     if request.method == 'POST':
         foods = []
         foodNames = []
         foodNames.clear()
         foods.clear()
-       
+
         form_data = request.form
         count = 0
         global currentFoods
         global nutritionInfo
         global foodItemList
-        for key,value in form_data.items():
+        for key, value in form_data.items():
             if (count == 0):
                 print(value)
                 food_list = foodList(value)
@@ -105,25 +102,21 @@ def foodData():
                     foodName = itemName + ", brand: " + brandName
                     foodNames.append(foodName)
                     foodItemList.append(i)
-                                        
+
                 # print("filler")
-           
+
                 # return_dictionary ["Food"] = value
-            count = count + 1     
+            count = count + 1
 
-            
             # print(form_data)
-            print("List of foods: " , foods)
-            print("Foods" , foodNames)
+            print("List of foods: ", foods)
+            print("Foods", foodNames)
 
-        return render_template('index.html', nutrition_data = nutritionInfo, 
-        calories = calorieCount, form_data = foodNames, selected_items = currentFoods, person_data = userInfo, scrollToAnchor='end')
-    
-
+        return render_template('index.html', nutrition_data=nutritionInfo,
+                               calories=calorieCount, form_data=foodNames, selected_items=currentFoods, person_data=userInfo, scrollToAnchor='end')
 
 
-
-@app.route('/data/', methods = ['POST', 'GET'])
+@app.route('/data/', methods=['POST', 'GET'])
 def data():
     if request.method == 'GET':
         return f"The URL /data is accessed directly. Try going to '/form' to submit form"
@@ -147,27 +140,24 @@ def data():
 
         # Creating values for the user.
         for key, value in form_data.items():
-            
+
             if counter == 0:
                 print(value)
                 age = int(value)
                 return_dictionary.append("Age: " + str(age))
-               
-            
+
             elif counter == 1:
                 print(request.form['gender'])
                 sex = value
                 return_dictionary.append("Sex: " + sex)
-                
-            
+
             elif counter == 2:
-                height = int(value) 
-                return_dictionary.append("Height: " +  str(height))
-               
- 
+                height = int(value)
+                return_dictionary.append("Height: " + str(height))
+
             elif counter == 3:
                 weight = int(value)
-                return_dictionary.append("Weight: " +  str(weight))
+                return_dictionary.append("Weight: " + str(weight))
 
             elif counter == 4:
                 exercise = request.form.get('exercise')
@@ -178,10 +168,10 @@ def data():
                 condition = value
                 return_dictionary.append("Condition: " + condition)
             counter = counter + 1
-    
+
         print("number of items: ", counter)
-        # Create a temporary person with the given attributes 
-       
+        # Create a temporary person with the given attributes
+
         # Kohei = person(sex, height, weight, age, exercise_level)
         global user
 
@@ -193,18 +183,19 @@ def data():
 
         # Add the final condition that the user has selected.
         if (condition.lower() == "maintain"):
-            return_dictionary ["Condition"] = user.return_maintenance()
+            return_dictionary["Condition"] = user.return_maintenance()
         elif (condition.lower() == "bulk"):
-            return_dictionary ["Condition"] = user.return_bulking()
+            return_dictionary["Condition"] = user.return_bulking()
         elif (condition.lower() == "losing"):
-            return_dictionary.append("Maintenence Calorie Count: " + str(user.return_losing("moderate")))
+            return_dictionary.append(
+                "Maintenence Calorie Count: " + str(user.return_losing("moderate")))
 
         global userInfo
         userInfo = return_dictionary
         Kohei = return_dictionary
 
-        # Returns a dictionary 
-        return render_template('index.html', person_data = return_dictionary, scrollToAnchor='end')
+        # Returns a dictionary
+        return render_template('index.html', person_data=return_dictionary, scrollToAnchor='end')
 
- 
+
 app.run(host='localhost', port=5000)

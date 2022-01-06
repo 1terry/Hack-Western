@@ -88,15 +88,15 @@
                                     <div class="valid-feedback mv-up">You selected a gender!</div>
                                     <div class="invalid-feedback mv-up">Please select a gender!</div>
                                 </div>
-
+ 
                                 <div class="col-md-12 height">
-                                    <input class="form-control" type="number" name="height" placeholder="Height" required>
+                                    <input class="form-control" type="number" name="height" placeholder="Height (cm)" required>
                                     <div class="valid-feedback">Height field is valid!</div>
                                     <div class="invalid-feedback">Height field cannot be blank!</div>
                                 </div>
 
                                 <div class="col-md-12 weight">
-                                    <input class="form-control" type="number" name="weight" placeholder="Weight" required>
+                                    <input class="form-control" type="number" name="weight" placeholder="Weight (kg)" required>
                                     <div class="valid-feedback">Weight field is valid!</div>
                                     <div class="invalid-feedback">Weight field cannot be blank!</div>
                                 </div>
@@ -135,10 +135,10 @@
 
     <!--Page 3-->
     <div class="container sec3" id="end">
-        <div class="centered-div">
-            <h1 class="food-header">What are we eating today?</h1>
-            <h4 class="subtitle"> Click the search button to get started!</h4>
-        </div>
+      <div class="centered-div">
+        <h1 class="food-header">What are we eating today?</h1>
+        <h4 class="subtitle"> Click the search button to get started!</h4>
+      </div>
 
       <div class="userItems">
         <h1 class="user-title">User Info</h1>
@@ -180,20 +180,20 @@
         <!-- {% if form_data|length > 0 %} -->
 
         <!-- getting new foodsies -->
-        <form autocomplete="on" novalidate action="/toList" method = "POST" class="center-form">
-          <!-- Does not show up -->
-          <tr>
-              <select name="foodItem" class="form-select mt-3 foodItems" required>
-               {% for value in form_data%}
-               <option value="{{ value }}"> {{ value }} </option>
-               {% endfor %}        
-              </select>
-          </tr>
-          <div class="form-button mt-3 left">
-            <button id="submit" type="submit" class="btn btn-primary">Add</button>
-          </div>
-        </form>
-        <!-- {% endif %} -->
+          <form autocomplete="on" novalidate action="/toList" method = "POST" class="center-form">
+            <!-- Does not show up -->
+            <tr>
+                <select name="foodItem" class="form-select mt-3 foodItems" required>
+                {% for value in form_data%}
+                <option value="{{ value }}"> {{ value }} </option>
+                {% endfor %}        
+                </select>
+            </tr>
+            <div class="form-button mt-3 left">
+              <button id="submit" type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+          <!-- {% endif %} -->
         </div>
 
       </div>
@@ -207,7 +207,7 @@
         {% endif %}
       </div>
 
-
+    <!-- End of section 3 -->
     </div>
 
 
