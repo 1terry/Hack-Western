@@ -395,16 +395,6 @@
 /* @media (min-resolution: 120dpi) { */
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media screen and (max-width: 1600px) {
-  .sec3 {
-    width: 50%;
-  }
-
-  .nutrition {
-    left: -300px;
-    position: absolute;
-  }
-}
 
 @media screen and (max-width: 2000px) {
   .sec1 {
@@ -424,5 +414,16 @@
   .form-body {
     transform: scale(0.8);
     margin-top: -100px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .sec3 {
+    width: 50%;
+  }
+
+  .nutrition {
+    left: -300px;
+    position: absolute;
   }
 }
