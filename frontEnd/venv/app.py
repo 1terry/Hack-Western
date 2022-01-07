@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 from person import person
 from API import API
 from FoodItem import FoodItem
@@ -6,6 +6,7 @@ from foodList import foodList
 from meal import meal
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 # CORS(app)
 
 userInfo = []
@@ -196,6 +197,19 @@ def data():
 
         # Returns a dictionary
         return render_template('index.html', person_data=return_dictionary, scrollToAnchor='end')
+
+
+@app.route('/Login', methods=['GET', 'POST'])
+def Login():
+    if request.method == 'POST':
+        # do stuff when the form is submitted
+
+        # redirect to end the POST handling
+        # the redirect can be to the same route or somewhere else
+        return redirect(url_for('index'))
+
+    # show the form, it wasn't submitted
+    return render_template('login.html')
 
 
 app.run(host='localhost', port=5000)
