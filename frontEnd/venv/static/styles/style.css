@@ -438,4 +438,14 @@
   .food-header {
     font-size: 50px;
   }
+
+  .foodList {
+    left: -800px;
+    position: absolute;
+  }
+
+  /* .sec3 form-content textarea {
+    left: -500px;
+    position: absolute;
+  } */
 }
