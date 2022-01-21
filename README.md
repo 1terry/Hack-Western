@@ -5,4 +5,4 @@ Authors:
 - Terry Ju
 - Kevin Yang
 - Anubhav Aery
-- Kohie Yusua
+- Kohie Yasui
